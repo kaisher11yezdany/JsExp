@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Addition of date example</p>
+
+<select id="mySelect"  >
+  <option value="7">1 week</option>
+  <option value="15">15 Days</option>
+  <option value="30">1 Month</option>
+  <option value="90">3 Month</option>
+</select>
+
+ <input type="date" name="date" id="selectdate" onchange="myFunction2()">
+ 
+
+<p id="demo"></p>
+  <p id="demo2"></p>
+  
+  <input type="text" name="final_date" id="finaldate">
+
+  <!-- sccript started -->
+
+<script>
+ Date.prototype.getTimestamp = function() {
+    var year = this.getFullYear(),
+        month = this.getMonth()+1,
+        day = this.getDate(),
+        hours = this.getHours(),
+        minutes = this.getMinutes(),
+        seconds = this.getSeconds();
+
+    month = month < 10 ? "0" + month : month;
+    day = day < 10 ? "0" + day : day;
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds; 
+
+    return year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+}
+  
+
+  function myFunction2() {
+
+    //this is taking the value of the select functions
+     var x = parseInt(document.getElementById("mySelect").value);
+    
+
+  
+    
+  //this is taking the value of selected box
+  var z = document.getElementById("selectdate").value;
+    
+
+    const d = new Date(z);
+    d.setDate(d.getDate() + x);
+    document.getElementById("finaldate").value = d.getTimestamp();
+    
+    
+    
+    
+  
+  document.getElementById("demo2").innerHTML = "You selected date: " + z;
+    document.getElementById("demo").innerHTML = "You selected days: " + y;
+}
+  
+  
+</script>
+
+</body>
+</html>
+
